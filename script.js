@@ -1,38 +1,39 @@
-const display = document.getElementById("display");
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-function append(value) {
-    if (display.innerText === "0") {
-        display.innerText = value;
-    } else {
-        display.innerText += value;
-    }
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    lightbox.style.display = "flex";
+    lightboxImg.src = images[currentIndex].src;
 }
 
-function clearDisplay() {
-    display.innerText = "0";
+function closeLightbox() {
+    lightbox.style.display = "none";
 }
 
-function deleteLast() {
-    display.innerText = display.innerText.slice(0, -1) || "0";
+function changeImage(step) {
+    currentIndex = (currentIndex + step + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
 }
 
-function calculate() {
-    try {
-        display.innerText = eval(display.innerText);
-    } catch {
-        display.innerText = "Error";
-    }
+function filterImages(category) {
+    images.forEach(img => {
+        if (category === "all" || img.classList.contains(category)) {
+            img.style.display = "block";
+        } else {
+            img.style.display = "none";
+        }
+    });
 }
-document.addEventListener("keydown", (event) => {
-    const key = event.key;
 
-    if (!isNaN(key) || "+-*/.".includes(key)) {
-        append(key);
-    } else if (key === "Enter") {
-        calculate();
-    } else if (key === "Backspace") {
-        deleteLast();
-    } else if (key === "Escape") {
-        clearDisplay();
+/* Keyboard Support */
+document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+        if (e.key === "ArrowRight") changeImage(1);
+        if (e.key === "ArrowLeft") changeImage(-1);
+        if (e.key === "Escape") closeLightbox();
     }
 });
