@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.player {
+    background: #111;
+    color: white;
+    width: 100%;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.player h2 {
+    margin: 10px 0 5px;
+}
+
+.player p {
+    margin: 0;
+    color: #bbb;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #00e676;
+    border-radius: 10px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.controls {
+    margin: 15px 0;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.volume input {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+ul li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+}
+
+ul li:hover,
+ul li.active {
+    background: #00e676;
+    color: black;
+}
+
+@media (max-width: 480px) {
+    .player {
+        border-radius: 0;
+        height: 100vh;
+    }
+}
