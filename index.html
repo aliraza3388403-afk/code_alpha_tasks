@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Responsive Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="player">
-    <h2 id="title">Song Title</h2>
-    <p id="artist">Artist Name</p>
+<div class="calculator">
+    <div class="display" id="display">0</div>
 
-    <audio id="audio"></audio>
+    <div class="buttons">
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button class="operator" onclick="deleteLast()">⌫</button>
+         <button class="operator" onclick="append('%')">%</button>
+        <button class="operator" onclick="append('*')">×</button>
 
-    <div class="progress-container" onclick="setProgress(event)">
-        <div class="progress" id="progress"></div>
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button class="operator" onclick="append('-')">−</button>
+
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button class="operator" onclick="append('+')">+</button>
+
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+           <button class="operator" onclick="append('/')">÷</button>
+        <button class="zero" onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
     </div>
-
-    <div class="time">
-        <span id="currentTime">0:00</span>
-        <span id="duration">0:00</span>
-    </div>
-
-    <div class="controls">
-        <button onclick="prevSong()">⏮</button>
-        <button onclick="playPause()">▶️</button>
-        <button onclick="nextSong()">⏭</button>
-    </div>
-
-    <div class="volume">
-        <span>🔊</span>
-        <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
-    </div>
-
-    <h3>Playlist</h3>
-    <ul id="playlist"></ul>
 </div>
 
 <script src="script.js"></script>
